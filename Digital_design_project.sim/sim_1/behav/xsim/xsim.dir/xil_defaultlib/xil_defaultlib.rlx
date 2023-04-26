@@ -1,0 +1,7 @@
+0.6
+2018.3
+Dec  7 2018
+00:33:28
+D:/vivado projects/Digital_design_project/Digital_design_project.sim/sim_1/behav/xsim/glbl.v,1544155481,verilog,,,,glbl,,,,,,,,
+D:/vivado projects/Digital_design_project/Digital_design_project.srcs/sim_1/new/tb.v,1680602037,verilog,,,,pulse_generator_tb,,,,,,,,
+D:/vivado projects/Digital_design_project/Digital_design_project.srcs/sources_1/new/main.v,1680601822,verilog,,D:/vivado projects/Digital_design_project/Digital_design_project.srcs/sim_1/new/tb.v,,debouncer;main,,,,,,,,
