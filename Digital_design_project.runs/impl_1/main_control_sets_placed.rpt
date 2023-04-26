@@ -1,7 +1,7 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.3 (win64) Build 2405991 Thu Dec  6 23:38:27 MST 2018
-| Date         : Wed Apr 26 11:21:29 2023
+| Date         : Wed Apr 26 11:59:45 2023
 | Host         : DESKTOP-9Q8C9KQ running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file main_control_sets_placed.rpt
 | Design       : main
@@ -24,7 +24,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |    13 |
-| Unused register locations in slices containing registers |    59 |
+| Unused register locations in slices containing registers |    57 |
 +----------------------------------------------------------+-------+
 
 
@@ -46,12 +46,12 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              51 |           20 |
+| No           | No                    | No                     |              53 |           21 |
 | No           | No                    | Yes                    |               0 |            0 |
 | No           | Yes                   | No                     |               0 |            0 |
 | Yes          | No                    | No                     |              16 |            5 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |              34 |           10 |
+| Yes          | Yes                   | No                     |              34 |           17 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
@@ -62,18 +62,18 @@ Table of Contents
 |    Clock Signal    |        Enable Signal       |       Set/Reset Signal       | Slice Load Count | Bel Load Count |
 +--------------------+----------------------------+------------------------------+------------------+----------------+
 |  div_clk_OBUF_BUFG | d11/count_reg[2]_0         | reset_IBUF                   |                1 |              1 |
-|  div_clk_OBUF_BUFG | d11/count_reg[2]_1         | reset_IBUF                   |                1 |              1 |
-|  div_clk_OBUF_BUFG | d3/E[0]                    | d3/debounced_button_reg_3[0] |                1 |              4 |
+|  div_clk_OBUF_BUFG | d11/count_reg[2]_2         | reset_IBUF                   |                1 |              1 |
+|  div_clk_OBUF_BUFG | d3/wrong_count_reg[2]_2[0] | d3/load_count_reg[0]_1[0]    |                1 |              4 |
+|  div_clk_OBUF_BUFG | d3/E[0]                    | d3/count_reg[0][0]           |                2 |              4 |
+|  div_clk_OBUF_BUFG | d3/wrong_count_reg[1][0]   | d3/debounced_button_reg_1[0] |                2 |              4 |
+|  div_clk_OBUF_BUFG | d3/wrong_count_reg[1]_0[0] | d3/debounced_button_reg_2[0] |                2 |              4 |
+|  div_clk_OBUF_BUFG | d3/wrong_count_reg[1]_1[0] | d3/debounced_button_reg_3[0] |                3 |              4 |
 |  div_clk_OBUF_BUFG | d3/wrong_count_reg[2][0]   | d3/SR[0]                     |                1 |              4 |
-|  div_clk_OBUF_BUFG | d3/wrong_count_reg[1]_0[0] | d3/debounced_button_reg_5[0] |                1 |              4 |
-|  div_clk_OBUF_BUFG | d3/wrong_count_reg[1]_1[0] | d3/debounced_button_reg_6[0] |                1 |              4 |
-|  div_clk_OBUF_BUFG | d3/wrong_count_reg[2]_0[0] | d3/debounced_button_reg_0[0] |                1 |              4 |
-|  div_clk_OBUF_BUFG | d3/wrong_count_reg[2]_1[0] | d3/debounced_button_reg_1[0] |                1 |              4 |
-|  div_clk_OBUF_BUFG | d3/wrong_count_reg[2]_2[0] | d3/debounced_button_reg_2[0] |                1 |              4 |
-|  div_clk_OBUF_BUFG | d3/wrong_count_reg[1][0]   | d3/debounced_button_reg_4[0] |                1 |              4 |
+|  div_clk_OBUF_BUFG | d3/wrong_count_reg[2]_0[0] | d3/load_count_reg[0][0]      |                2 |              4 |
+|  div_clk_OBUF_BUFG | d3/wrong_count_reg[2]_1[0] | d3/load_count_reg[0]_0[0]    |                2 |              4 |
 |  div_clk_OBUF_BUFG | d11/E[0]                   |                              |                5 |             16 |
 |  clk_IBUF_BUFG     |                            |                              |                6 |             18 |
-|  div_clk_OBUF_BUFG |                            |                              |               14 |             33 |
+|  div_clk_OBUF_BUFG |                            |                              |               15 |             35 |
 +--------------------+----------------------------+------------------------------+------------------+----------------+
 
 

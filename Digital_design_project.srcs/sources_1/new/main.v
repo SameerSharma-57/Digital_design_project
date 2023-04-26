@@ -58,16 +58,16 @@ module frequency_divider(clk,div_clock);
     end
 endmodule
 
-module displaylogic(In,a,b,c,d,e,f,g);
+module displaylogic(In,out);
     input [3:0]In;
-    output a,b,c,d,e,f,g;
-    assign a=~(In[0]|In[2]|(In[1]&In[3])|(~In[1]&~In[3]));
-    assign b=~(~In[1]|(~In[2]&~In[3])|(In[2]&In[3]));
-    assign c=~(In[1]|~In[2]|In[3]);
-    assign d=~(In[0]|(In[2]&~In[3])|(~In[1]&~In[3])|(~In[1]&In[2])|((In[1]&~In[2])&In[3]));
-    assign e=~((In[2]|~In[1])&~In[3]);
-    assign f=~(In[0]|(~In[2]&~In[3])|(In[1]&~In[2])|(In[1]&~In[3]));
-    assign g=~(In[0]|(In[1]&~In[2])|(In[2]&~In[3])|(~In[1]&In[2]));
+    output [6:0] out;
+    assign out[0]=~(In[0]|In[2]|(In[1]&In[3])|(~In[1]&~In[3]));
+    assign out[1]=~(~In[1]|(~In[2]&~In[3])|(In[2]&In[3]));
+    assign out[2]=~(In[1]|~In[2]|In[3]);
+    assign out[3]=~(In[0]|(In[2]&~In[3])|(~In[1]&~In[3])|(~In[1]&In[2])|((In[1]&~In[2])&In[3]));
+    assign out[4]=~((In[2]|~In[1])&~In[3]);
+    assign out[5]=~(In[0]|(~In[2]&~In[3])|(In[1]&~In[2])|(In[1]&~In[3]));
+    assign out[6]=~(In[0]|(In[1]&~In[2])|(In[2]&~In[3])|(~In[1]&In[2]));
 endmodule
 
 module decoder_2x4(
@@ -108,6 +108,8 @@ module main(
     wire [9:0]debounced_buttons ;
     wire debounced_backspace;
     reg [2:0]wrong_count=3'b0;
+    reg [1:0] res=2'b00; 
+    wire [3:0]ou1,ou2,ou3,ou4;
 //    assign enable=4'b1110;
     
     
@@ -141,7 +143,12 @@ module main(
     debouncer d9(.clk(div_clk),.button(buttons[8]),.debounced_button(debounced_buttons[8]));
     debouncer d10(.clk(div_clk),.button(buttons[9]),.debounced_button(debounced_buttons[9]));
     debouncer d11(.clk(div_clk), .button(backspace), .debounced_button(debounced_backspace));
-    
+    displaylogic dl1(pass_input[0],ou1);
+    displaylogic dl2(pass_input[1],ou2);
+    displaylogic dl3(pass_input[2],ou3);
+    displaylogic dl4(pass_input[3],ou4);
+
+
 //    always @(count)begin
 //        if(count<4)begin
 //        case(pass_input[count])
@@ -166,12 +173,38 @@ module main(
 //    end
     
     
+//    always@(posedge div_clk)
+//    begin
+//    if (res == 2'b00)
+//    begin
+//        enable = 4'b0111;
+//        seven_seg_out <= ou1;
+//        res <= 2'b01;
+//    end
+//    else if(res==2'b01)
+//    begin
+//        enable = 4'b1011;
+//        seven_seg_out <= ou2;
+//        res <= 2'b10;
+//    end
+    
+//    else if(res==2'b10)
+//    begin
+//        enable = 4'b1101;
+//        seven_seg_out <= ou3;
+//        res <= 2'b11;
+//    end
+    
+//    else
+//    begin
+//        enable = 4'b1110;
+//        seven_seg_out <= ou4;
+//        res <= 2'b11;
+//    end
+//end
     always@(posedge div_clk)
     begin
         out_count=load?load_count:count;
-        
-//        decoder_2x4(count,enable);
-//        displaylogic (pass_input[count],seven_seg_out[0],seven_seg_out[1],seven_seg_out[2],seven_seg_out[3],seven_seg_out[4],seven_seg_out[5],seven_seg_out[6]);
         
         if (reset==1)begin
             count=0;
@@ -180,7 +213,6 @@ module main(
             is_equal=1;
             password_loaded=0;
             load_count=3'b0;
-//            wrong_count=0;
            
         end
         
@@ -194,32 +226,20 @@ module main(
             end
             else load_count=load_count>0?load_count-1:0;
         end        
-//        if(!load) password_loaded=0;load_count=0;
-        
-//        if(load_count>=4 && !password_loaded)begin
-//            if(load_count==4)begin
-//                for(j=0;j<4;j=j+1)begin
-//                    password[j]=loaded_password[j];
-//                end
-                
-//                password_loaded=1;
-                
-//            end
-//        end
+
         
         else if (load==1)begin
             if(load_count==4 && !password_loaded)begin
-//                if(load_count==4)begin
                 for(j=0;j<4;j=j+1)begin
                     password[j]=loaded_password[j];
                 end
                 
                 password_loaded=1;
                 load_count=3'b0;
-//                end
+
             end
             else if (!password_loaded) begin
-                for(j=0;j<9;j=j+1)begin
+                for(j=0;j<10;j=j+1)begin
                     if(debounced_buttons[j])begin
                         loaded_password[load_count] = j;
                         load_count=load_count+1;
@@ -229,22 +249,6 @@ module main(
         end
         
         
-        
-        
-//        else if (count>=4) begin
-//            count = 0;
-//            is_equal=1;
-//            for(j=0;j<4;j=j+1)begin
-//                if(password[j]!=pass_input[j])begin
-//                 is_equal=0;
-                
-//                 end
-//            end
-            
-////            if (pass_input==password) green_led=1;
-//            if (is_equal) green_led=1;
-//            else red_led=1;
-//        end
         
         else begin
             if (count>=4) begin
@@ -256,15 +260,14 @@ module main(
                     
                      end
                 end
-                
-    //            if (pass_input==password) green_led=1;
+              
                 if (is_equal)begin green_led=1;wrong_count=0;end
                
                 else begin wrong_count=wrong_count+1;red_led=1;end
             end
             
             else begin
-                for(j=0;j<9;j=j+1)begin
+                for(j=0;j<10;j=j+1)begin
                     if(debounced_buttons[j])begin
                         pass_input[count] = j;
                         count=count+1;

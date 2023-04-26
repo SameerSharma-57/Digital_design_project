@@ -28,14 +28,6 @@ set_property src_info {type:XDC file:1 line:36 export:INPUT save:INPUT read:READ
 set_property -dict { PACKAGE_PIN L20   IOSTANDARD LVCMOS33 } [get_ports { buttons[2] }]; #IO_L9N_T1_DQS_AD3N_35 Sch=btn[2]
 set_property src_info {type:XDC file:1 line:37 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN L19   IOSTANDARD LVCMOS33 } [get_ports { buttons[3] }]; #IO_L9P_T1_DQS_AD3P_35 Sch=btn[3]
-set_property src_info {type:XDC file:2 line:30 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN B20   IOSTANDARD LVCMOS33 } [get_ports { enable[0] }]; #rpio_12
-set_property src_info {type:XDC file:2 line:31 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN W8    IOSTANDARD LVCMOS33 } [get_ports { enable[1]}]; #rpio_13
-set_property src_info {type:XDC file:2 line:32 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN U8    IOSTANDARD LVCMOS33 } [get_ports { enable[2] }]; #rpio_22
-set_property src_info {type:XDC file:2 line:33 export:INPUT save:INPUT read:READ} [current_design]
-set_property -dict { PACKAGE_PIN W6    IOSTANDARD LVCMOS33 } [get_ports { enable[3] }]; #rpio_23
 set_property src_info {type:XDC file:2 line:38 export:INPUT save:INPUT read:READ} [current_design]
 set_property -dict { PACKAGE_PIN V6    IOSTANDARD LVCMOS33 } [get_ports { buttons[4] }]; #rpio_14
 set_property src_info {type:XDC file:2 line:39 export:INPUT save:INPUT read:READ} [current_design]

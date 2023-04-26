@@ -27,10 +27,10 @@
 #set_property -dict { PACKAGE_PIN W10   IOSTANDARD LVCMOS33 } [get_ports { enable[3] }]; #rpio_11
 
 ##LED(GREEN)## 
-set_property -dict { PACKAGE_PIN B20   IOSTANDARD LVCMOS33 } [get_ports { enable[0] }]; #rpio_12
-set_property -dict { PACKAGE_PIN W8    IOSTANDARD LVCMOS33 } [get_ports { enable[1]}]; #rpio_13
-set_property -dict { PACKAGE_PIN U8    IOSTANDARD LVCMOS33 } [get_ports { enable[2] }]; #rpio_22
-set_property -dict { PACKAGE_PIN W6    IOSTANDARD LVCMOS33 } [get_ports { enable[3] }]; #rpio_23
+#set_property -dict { PACKAGE_PIN B20   IOSTANDARD LVCMOS33 } [get_ports { enable[0] }]; #rpio_12
+#set_property -dict { PACKAGE_PIN W8    IOSTANDARD LVCMOS33 } [get_ports { enable[1]}]; #rpio_13
+#set_property -dict { PACKAGE_PIN U8    IOSTANDARD LVCMOS33 } [get_ports { enable[2] }]; #rpio_22
+#set_property -dict { PACKAGE_PIN W6    IOSTANDARD LVCMOS33 } [get_ports { enable[3] }]; #rpio_23
 #set_property -dict { PACKAGE_PIN Y7    IOSTANDARD LVCMOS33 } [get_ports { LEDE }]; #rpio_24
 #set_property -dict { PACKAGE_PIN F20   IOSTANDARD LVCMOS33 } [get_ports { LEDF }]; #rpio_25
 
